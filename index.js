@@ -1,5 +1,6 @@
 require('dotenv').config()
 const path = require('path')
+const cors = require('cors')
 
 console.log(process.argv[3])
 console.log(process.env.USER) // in heroku the PORT lives in the env
@@ -9,6 +10,7 @@ const express = require('express')
 
 const server = express()
 server.use(express.json())
+server.use(cors())
 server.use(express.static(
     path.join(__dirname,'client/build' )
 ))
